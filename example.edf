@@ -1,0 +1,886 @@
+(edif testattr
+ (rename Z4bitadder "adder")
+  (edifversion 2 0 0)
+  (edifLevel 0)
+  (keywordmap (keywordlevel 0))
+  (status
+    (written
+      (timeStamp 2020 06 09 17 00 07)
+      (program "Synplify Pro" (version "Version 9.0, mapper 9.0.0, Build 149R"))
+      (comment "Built by 'BYU spydrnet tool'")
+      )
+    )
+  (Library VIRTEX
+    (edifLevel 0)
+    (technology (numberDefinition ))
+    (Cell IDELAYCTRL (celltype GENERIC)
+      (view netlist (viewtype NETLIST)
+        (interface
+          (port REFCLK(direction INPUT))
+          (port RST(direction INPUT))
+          (port RDY(direction OUTPUT))
+          )
+        )
+      )
+    (Cell IDELAY (celltype GENERIC)
+      (view netlist (viewtype NETLIST)
+        (interface
+          (port C(direction INPUT))
+          (port CE(direction INPUT))
+          (port I(direction INPUT))
+          (port INC(direction INPUT))
+          (port RST(direction INPUT))
+          (port O(direction OUTPUT))
+          )
+        )
+      )
+    (Cell ODDR (celltype GENERIC)
+      (view netlist (viewtype NETLIST)
+        (interface
+          (port Q(direction OUTPUT))
+          (port C(direction INPUT))
+          (port CE(direction INPUT))
+          (port D1(direction INPUT))
+          (port D2(direction INPUT))
+          (port R(direction INPUT))
+          (port S(direction INPUT))
+          )
+        )
+      )
+    (Cell IDDR (celltype GENERIC)
+      (view netlist (viewtype NETLIST)
+        (interface
+          (port Q1(direction OUTPUT))
+          (port Q2(direction OUTPUT))
+          (port C(direction INPUT))
+          (port CE(direction INPUT))
+          (port D(direction INPUT))
+          (port S(direction INPUT))
+          (port R(direction INPUT))
+          )
+        )
+      )
+    (Cell IBUF (celltype GENERIC)
+      (view netlist (viewtype NETLIST)
+        (interface
+          (port O(direction OUTPUT))
+          (port I(direction INPUT))
+          )
+        )
+      )
+    (Cell OBUF (celltype GENERIC)
+      (view netlist (viewtype NETLIST)
+        (interface
+          (port O(direction OUTPUT))
+          (port I(direction INPUT))
+          )
+        )
+      )
+    (Cell LUT4_L (celltype GENERIC)
+      (view netlist (viewtype NETLIST)
+        (interface
+          (port I0(direction INPUT))
+          (port I1(direction INPUT))
+          (port I2(direction INPUT))
+          (port I3(direction INPUT))
+          (port LO(direction OUTPUT))
+          )
+        )
+      )
+    (Cell LUT4 (celltype GENERIC)
+      (view netlist (viewtype NETLIST)
+        (interface
+          (port I0(direction INPUT))
+          (port I1(direction INPUT))
+          (port I2(direction INPUT))
+          (port I3(direction INPUT))
+          (port O(direction OUTPUT))
+          )
+        )
+      )
+    (Cell LUT3_L (celltype GENERIC)
+      (view netlist (viewtype NETLIST)
+        (interface
+          (port I0(direction INPUT))
+          (port I1(direction INPUT))
+          (port I2(direction INPUT))
+          (port LO(direction OUTPUT))
+          )
+        )
+      )
+    (Cell LUT2_L (celltype GENERIC)
+      (view netlist (viewtype NETLIST)
+        (interface
+          (port I0(direction INPUT))
+          (port I1(direction INPUT))
+          (port LO(direction OUTPUT))
+          )
+        )
+      )
+    (Cell LUT2 (celltype GENERIC)
+      (view netlist (viewtype NETLIST)
+        (interface
+          (port I0(direction INPUT))
+          (port I1(direction INPUT))
+          (port O(direction OUTPUT))
+          )
+        )
+      )
+    (Cell BUFGP (celltype GENERIC)
+      (view netlist (viewtype NETLIST)
+        (interface
+          (port I(direction INPUT))
+          (port O(direction OUTPUT))
+          )
+        )
+      )
+    )
+  (Library UNILIB
+    (edifLevel 0)
+    (technology (numberDefinition ))
+    (Cell FDC (celltype GENERIC)
+      (view netlist (viewtype NETLIST)
+        (interface
+          (port Q(direction OUTPUT))
+          (port D(direction INPUT))
+          (port C(direction INPUT))
+          (port CLR(direction INPUT))
+          )
+        )
+      )
+    (Cell INV (celltype GENERIC)
+      (view netlist (viewtype NETLIST)
+        (interface
+          (port I(direction INPUT))
+          (port O(direction OUTPUT))
+          )
+        )
+      )
+    (Cell GND (celltype GENERIC)
+      (view netlist (viewtype NETLIST)
+        (interface
+          (port G(direction OUTPUT))
+          )
+        )
+      )
+    )
+  (Library work
+    (edifLevel 0)
+    (technology (numberDefinition ))
+    (Cell (rename Z4bitadder "adder") (celltype GENERIC)
+      (view netlist (viewtype NETLIST)
+        (interface
+          (port (array (rename data1 "data1(3:0)") 4) (direction INPUT))
+          (port (array (rename data2 "data2(3:0)") 4) (direction INPUT))
+          (port (array (rename answer "answer(3:0)") 4) (direction OUTPUT))
+          (port clk(direction INPUT))
+          (port reset(direction INPUT))
+          (port enable(direction INPUT))
+          )
+        (contents
+          (instance un3_answer1_axbxc3 (viewref netlist (cellref LUT4_L(libraryref VIRTEX)))
+            (property INIT (string "1E78"))
+            )(instance un2_answer2_axbxc3 (viewref netlist (cellref LUT4_L(libraryref VIRTEX)))
+            (property INIT (string "1E78"))
+            )(instance reset_c_i (viewref netlist (cellref INV(libraryref UNILIB)))
+            )(instance (rename data21r_3 "data21r[3]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename data22r_0 "data22r[0]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename data22r_1 "data22r[1]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename data22r_2 "data22r[2]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename data22r_3 "data22r[3]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename answer2_0 "answer2[0]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename answer2_1 "answer2[1]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename answer2_2 "answer2[2]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename answer2_3 "answer2[3]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename data11r_0 "data11r[0]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename data11r_1 "data11r[1]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename data11r_2 "data11r[2]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename data11r_3 "data11r[3]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename data12r_0 "data12r[0]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename data12r_1 "data12r[1]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename data12r_2 "data12r[2]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename data12r_3 "data12r[3]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename data21r_0 "data21r[0]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename data21r_1 "data21r[1]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename data21r_2 "data21r[2]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename answer1_0 "answer1[0]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename answer1_1 "answer1[1]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename answer1_2 "answer1[2]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance (rename answer1_3 "answer1[3]") (viewref netlist (cellref FDC(libraryref UNILIB)))
+            )(instance un3_answer1_axbxc3_1 (viewref netlist (cellref LUT2(libraryref VIRTEX)))
+            (property INIT (string "6"))
+            )(instance un2_answer2_axbxc3_1 (viewref netlist (cellref LUT2(libraryref VIRTEX)))
+            (property INIT (string "6"))
+            )(instance un2_answer2_axb0 (viewref netlist (cellref LUT2_L(libraryref VIRTEX)))
+            (property INIT (string "6"))
+            )(instance un2_answer2_axbxc1 (viewref netlist (cellref LUT4_L(libraryref VIRTEX)))
+            (property INIT (string "936C"))
+            )(instance un2_answer2_axbxc2 (viewref netlist (cellref LUT3_L(libraryref VIRTEX)))
+            (property INIT (string "96"))
+            )(instance un3_answer1_axb0 (viewref netlist (cellref LUT2_L(libraryref VIRTEX)))
+            (property INIT (string "6"))
+            )(instance un3_answer1_axbxc1 (viewref netlist (cellref LUT4_L(libraryref VIRTEX)))
+            (property INIT (string "936C"))
+            )(instance un3_answer1_axbxc2 (viewref netlist (cellref LUT3_L(libraryref VIRTEX)))
+            (property INIT (string "96"))
+            )(instance un2_answer2_p4 (viewref netlist (cellref LUT4(libraryref VIRTEX)))
+            (property INIT (string "EC80"))
+            )(instance un3_answer1_p4 (viewref netlist (cellref LUT4(libraryref VIRTEX)))
+            (property INIT (string "EC80"))
+            )(instance clk_ibuf (viewref netlist (cellref BUFGP(libraryref VIRTEX)))
+            )(instance (rename answer_obuf_3 "answer_obuf[3]") (viewref netlist (cellref OBUF(libraryref VIRTEX)))
+            )(instance (rename answer_obuf_2 "answer_obuf[2]") (viewref netlist (cellref OBUF(libraryref VIRTEX)))
+            )(instance (rename answer_obuf_1 "answer_obuf[1]") (viewref netlist (cellref OBUF(libraryref VIRTEX)))
+            )(instance (rename answer_obuf_0 "answer_obuf[0]") (viewref netlist (cellref OBUF(libraryref VIRTEX)))
+            )(instance (rename data2_ibuf_3 "data2_ibuf[3]") (viewref netlist (cellref IBUF(libraryref VIRTEX)))
+            )(instance (rename data2_ibuf_2 "data2_ibuf[2]") (viewref netlist (cellref IBUF(libraryref VIRTEX)))
+            )(instance (rename data2_ibuf_1 "data2_ibuf[1]") (viewref netlist (cellref IBUF(libraryref VIRTEX)))
+            )(instance (rename data2_ibuf_0 "data2_ibuf[0]") (viewref netlist (cellref IBUF(libraryref VIRTEX)))
+            )(instance (rename data1_ibuf_3 "data1_ibuf[3]") (viewref netlist (cellref IBUF(libraryref VIRTEX)))
+            )(instance (rename data1_ibuf_2 "data1_ibuf[2]") (viewref netlist (cellref IBUF(libraryref VIRTEX)))
+            )(instance (rename data1_ibuf_1 "data1_ibuf[1]") (viewref netlist (cellref IBUF(libraryref VIRTEX)))
+            )(instance (rename data1_ibuf_0 "data1_ibuf[0]") (viewref netlist (cellref IBUF(libraryref VIRTEX)))
+            )(instance enable_ibuf (viewref netlist (cellref IBUF(libraryref VIRTEX)))
+            )(instance reset_ibuf (viewref netlist (cellref IBUF(libraryref VIRTEX)))
+            )(instance dlyctrl (viewref netlist (cellref IDELAYCTRL(libraryref VIRTEX)))
+            )(instance (rename answer_gen_0_U_ODDR "answer_gen.0.U_ODDR") (viewref netlist (cellref ODDR(libraryref VIRTEX)))
+            (property INIT (string "0"))
+            )(instance (rename answer_gen_1_U_ODDR "answer_gen.1.U_ODDR") (viewref netlist (cellref ODDR(libraryref VIRTEX)))
+            (property INIT (string "0"))
+            )(instance (rename answer_gen_2_U_ODDR "answer_gen.2.U_ODDR") (viewref netlist (cellref ODDR(libraryref VIRTEX)))
+            (property INIT (string "0"))
+            )(instance (rename answer_gen_3_U_ODDR "answer_gen.3.U_ODDR") (viewref netlist (cellref ODDR(libraryref VIRTEX)))
+            (property INIT (string "0"))
+            )(instance (rename ddr_data_gen_0_U2_IDDR "ddr_data_gen.0.U2_IDDR") (viewref netlist (cellref IDDR(libraryref VIRTEX)))
+            )(instance (rename ddr_data_gen_1_U2_IDDR "ddr_data_gen.1.U2_IDDR") (viewref netlist (cellref IDDR(libraryref VIRTEX)))
+            )(instance (rename ddr_data_gen_3_U2_IDDR "ddr_data_gen.3.U2_IDDR") (viewref netlist (cellref IDDR(libraryref VIRTEX)))
+            )(instance (rename ddr_data_gen_2_U2_IDDR "ddr_data_gen.2.U2_IDDR") (viewref netlist (cellref IDDR(libraryref VIRTEX)))
+            )(instance (rename ddr_data_gen_0_U1_IDDR "ddr_data_gen.0.U1_IDDR") (viewref netlist (cellref IDDR(libraryref VIRTEX)))
+            )(instance (rename ddr_data_gen_1_U1_IDDR "ddr_data_gen.1.U1_IDDR") (viewref netlist (cellref IDDR(libraryref VIRTEX)))
+            )(instance (rename ddr_data_gen_2_U1_IDDR "ddr_data_gen.2.U1_IDDR") (viewref netlist (cellref IDDR(libraryref VIRTEX)))
+            )(instance (rename ddr_data_gen_3_U1_IDDR "ddr_data_gen.3.U1_IDDR") (viewref netlist (cellref IDDR(libraryref VIRTEX)))
+            )(instance (rename ddata_gen_2_UD2 "ddata_gen.2.UD2") (viewref netlist (cellref IDELAY(libraryref VIRTEX)))
+            )(instance (rename ddata_gen_3_UD2 "ddata_gen.3.UD2") (viewref netlist (cellref IDELAY(libraryref VIRTEX)))
+            )(instance (rename ddata_gen_0_UD2 "ddata_gen.0.UD2") (viewref netlist (cellref IDELAY(libraryref VIRTEX)))
+            )(instance (rename ddata_gen_1_UD2 "ddata_gen.1.UD2") (viewref netlist (cellref IDELAY(libraryref VIRTEX)))
+            )(instance (rename ddata_gen_3_UD1 "ddata_gen.3.UD1") (viewref netlist (cellref IDELAY(libraryref VIRTEX)))
+            )(instance (rename ddata_gen_0_UD1 "ddata_gen.0.UD1") (viewref netlist (cellref IDELAY(libraryref VIRTEX)))
+            )(instance (rename ddata_gen_1_UD1 "ddata_gen.1.UD1") (viewref netlist (cellref IDELAY(libraryref VIRTEX)))
+            )(instance (rename ddata_gen_2_UD1 "ddata_gen.2.UD1") (viewref netlist (cellref IDELAY(libraryref VIRTEX)))
+            )(instance GND (viewref netlist (cellref GND(libraryref UNILIB)))
+            )(net (rename answer_1_0 "answer_1(0)") (joined
+              (portref Q (instanceref answer_gen_0_U_ODDR))
+              (portref I (instanceref answer_obuf_0))
+              
+              )
+            )(net (rename answer_1_1 "answer_1(1)") (joined
+              (portref Q (instanceref answer_gen_1_U_ODDR))
+              (portref I (instanceref answer_obuf_1))
+              
+              )
+            )(net (rename answer_1_2 "answer_1(2)") (joined
+              (portref Q (instanceref answer_gen_2_U_ODDR))
+              (portref I (instanceref answer_obuf_2))
+              
+              )
+            )(net (rename answer_1_3 "answer_1(3)") (joined
+              (portref Q (instanceref answer_gen_3_U_ODDR))
+              (portref I (instanceref answer_obuf_3))
+              
+              )
+            )(net (rename ddata1_2 "ddata1(2)") (joined
+              (portref O (instanceref ddata_gen_2_UD1))
+              (portref D (instanceref ddr_data_gen_2_U1_IDDR))
+              
+              )
+            )(net (rename ddata1_1 "ddata1(1)") (joined
+              (portref O (instanceref ddata_gen_1_UD1))
+              (portref D (instanceref ddr_data_gen_1_U1_IDDR))
+              
+              )
+            )(net (rename ddata1_0 "ddata1(0)") (joined
+              (portref O (instanceref ddata_gen_0_UD1))
+              (portref D (instanceref ddr_data_gen_0_U1_IDDR))
+              
+              )
+            )(net (rename ddata1_3 "ddata1(3)") (joined
+              (portref O (instanceref ddata_gen_3_UD1))
+              (portref D (instanceref ddr_data_gen_3_U1_IDDR))
+              
+              )
+            )(net (rename ddata2_1 "ddata2(1)") (joined
+              (portref O (instanceref ddata_gen_1_UD2))
+              (portref D (instanceref ddr_data_gen_1_U2_IDDR))
+              
+              )
+            )(net (rename ddata2_0 "ddata2(0)") (joined
+              (portref O (instanceref ddata_gen_0_UD2))
+              (portref D (instanceref ddr_data_gen_0_U2_IDDR))
+              
+              )
+            )(net (rename ddata2_3 "ddata2(3)") (joined
+              (portref O (instanceref ddata_gen_3_UD2))
+              (portref D (instanceref ddr_data_gen_3_U2_IDDR))
+              
+              )
+            )(net (rename ddata2_2 "ddata2(2)") (joined
+              (portref O (instanceref ddata_gen_2_UD2))
+              (portref D (instanceref ddr_data_gen_2_U2_IDDR))
+              
+              )
+            )(net (rename data11_3 "data11(3)") (joined
+              (portref Q1 (instanceref ddr_data_gen_3_U1_IDDR))
+              (portref D (instanceref data11r_3))
+              
+              )
+            )(net (rename data12_3 "data12(3)") (joined
+              (portref Q2 (instanceref ddr_data_gen_3_U1_IDDR))
+              (portref D (instanceref data12r_3))
+              
+              )
+            )(net (rename data11_2 "data11(2)") (joined
+              (portref Q1 (instanceref ddr_data_gen_2_U1_IDDR))
+              (portref D (instanceref data11r_2))
+              
+              )
+            )(net (rename data12_2 "data12(2)") (joined
+              (portref Q2 (instanceref ddr_data_gen_2_U1_IDDR))
+              (portref D (instanceref data12r_2))
+              
+              )
+            )(net (rename data11_1 "data11(1)") (joined
+              (portref Q1 (instanceref ddr_data_gen_1_U1_IDDR))
+              (portref D (instanceref data11r_1))
+              
+              )
+            )(net (rename data12_1 "data12(1)") (joined
+              (portref Q2 (instanceref ddr_data_gen_1_U1_IDDR))
+              (portref D (instanceref data12r_1))
+              
+              )
+            )(net (rename data11_0 "data11(0)") (joined
+              (portref Q1 (instanceref ddr_data_gen_0_U1_IDDR))
+              (portref D (instanceref data11r_0))
+              
+              )
+            )(net (rename data12_0 "data12(0)") (joined
+              (portref Q2 (instanceref ddr_data_gen_0_U1_IDDR))
+              (portref D (instanceref data12r_0))
+              
+              )
+            )(net (rename data21_2 "data21(2)") (joined
+              (portref Q1 (instanceref ddr_data_gen_2_U2_IDDR))
+              (portref D (instanceref data21r_2))
+              
+              )
+            )(net (rename data22_2 "data22(2)") (joined
+              (portref Q2 (instanceref ddr_data_gen_2_U2_IDDR))
+              (portref D (instanceref data22r_2))
+              
+              )
+            )(net (rename data21_3 "data21(3)") (joined
+              (portref Q1 (instanceref ddr_data_gen_3_U2_IDDR))
+              (portref D (instanceref data21r_3))
+              
+              )
+            )(net (rename data22_3 "data22(3)") (joined
+              (portref Q2 (instanceref ddr_data_gen_3_U2_IDDR))
+              (portref D (instanceref data22r_3))
+              
+              )
+            )(net (rename data21_1 "data21(1)") (joined
+              (portref Q1 (instanceref ddr_data_gen_1_U2_IDDR))
+              (portref D (instanceref data21r_1))
+              
+              )
+            )(net (rename data22_1 "data22(1)") (joined
+              (portref Q2 (instanceref ddr_data_gen_1_U2_IDDR))
+              (portref D (instanceref data22r_1))
+              
+              )
+            )(net (rename data21_0 "data21(0)") (joined
+              (portref Q1 (instanceref ddr_data_gen_0_U2_IDDR))
+              (portref D (instanceref data21r_0))
+              
+              )
+            )(net (rename data22_0 "data22(0)") (joined
+              (portref Q2 (instanceref ddr_data_gen_0_U2_IDDR))
+              (portref D (instanceref data22r_0))
+              
+              )
+            )(net (rename answer1Z0Z_3 "answer1(3)") (joined
+              (portref Q (instanceref answer1_3))
+              (portref D1 (instanceref answer_gen_3_U_ODDR))
+              
+              )
+            )(net (rename answer2Z0Z_3 "answer2(3)") (joined
+              (portref Q (instanceref answer2_3))
+              (portref D2 (instanceref answer_gen_3_U_ODDR))
+              
+              )
+            )(net (rename answer1Z0Z_2 "answer1(2)") (joined
+              (portref Q (instanceref answer1_2))
+              (portref D1 (instanceref answer_gen_2_U_ODDR))
+              
+              )
+            )(net (rename answer2Z0Z_2 "answer2(2)") (joined
+              (portref Q (instanceref answer2_2))
+              (portref D2 (instanceref answer_gen_2_U_ODDR))
+              
+              )
+            )(net (rename answer1Z0Z_1 "answer1(1)") (joined
+              (portref Q (instanceref answer1_1))
+              (portref D1 (instanceref answer_gen_1_U_ODDR))
+              
+              )
+            )(net (rename answer2Z0Z_1 "answer2(1)") (joined
+              (portref Q (instanceref answer2_1))
+              (portref D2 (instanceref answer_gen_1_U_ODDR))
+              
+              )
+            )(net (rename answer1Z0Z_0 "answer1(0)") (joined
+              (portref Q (instanceref answer1_0))
+              (portref D1 (instanceref answer_gen_0_U_ODDR))
+              
+              )
+            )(net (rename answer2Z0Z_0 "answer2(0)") (joined
+              (portref Q (instanceref answer2_0))
+              (portref D2 (instanceref answer_gen_0_U_ODDR))
+              
+              )
+            )(net (rename dlyctrlZ0 "dlyctrl") (joined
+              (portref RDY (instanceref dlyctrl))
+              
+              )
+            )(net (rename GNDZ0 "GND") (joined
+              (portref G (instanceref GND))
+              (portref RST (instanceref ddata_gen_2_UD1))
+              (portref INC (instanceref ddata_gen_2_UD1))
+              (portref CE (instanceref ddata_gen_2_UD1))
+              (portref C (instanceref ddata_gen_2_UD1))
+              (portref RST (instanceref ddata_gen_1_UD1))
+              (portref INC (instanceref ddata_gen_1_UD1))
+              (portref CE (instanceref ddata_gen_1_UD1))
+              (portref C (instanceref ddata_gen_1_UD1))
+              (portref RST (instanceref ddata_gen_0_UD1))
+              (portref INC (instanceref ddata_gen_0_UD1))
+              (portref CE (instanceref ddata_gen_0_UD1))
+              (portref C (instanceref ddata_gen_0_UD1))
+              (portref RST (instanceref ddata_gen_3_UD1))
+              (portref INC (instanceref ddata_gen_3_UD1))
+              (portref CE (instanceref ddata_gen_3_UD1))
+              (portref C (instanceref ddata_gen_3_UD1))
+              (portref RST (instanceref ddata_gen_1_UD2))
+              (portref INC (instanceref ddata_gen_1_UD2))
+              (portref CE (instanceref ddata_gen_1_UD2))
+              (portref C (instanceref ddata_gen_1_UD2))
+              (portref RST (instanceref ddata_gen_0_UD2))
+              (portref INC (instanceref ddata_gen_0_UD2))
+              (portref CE (instanceref ddata_gen_0_UD2))
+              (portref C (instanceref ddata_gen_0_UD2))
+              (portref RST (instanceref ddata_gen_3_UD2))
+              (portref INC (instanceref ddata_gen_3_UD2))
+              (portref CE (instanceref ddata_gen_3_UD2))
+              (portref C (instanceref ddata_gen_3_UD2))
+              (portref RST (instanceref ddata_gen_2_UD2))
+              (portref INC (instanceref ddata_gen_2_UD2))
+              (portref CE (instanceref ddata_gen_2_UD2))
+              (portref C (instanceref ddata_gen_2_UD2))
+              (portref S (instanceref ddr_data_gen_3_U1_IDDR))
+              (portref S (instanceref ddr_data_gen_2_U1_IDDR))
+              (portref S (instanceref ddr_data_gen_1_U1_IDDR))
+              (portref S (instanceref ddr_data_gen_0_U1_IDDR))
+              (portref S (instanceref ddr_data_gen_2_U2_IDDR))
+              (portref S (instanceref ddr_data_gen_3_U2_IDDR))
+              (portref S (instanceref ddr_data_gen_1_U2_IDDR))
+              (portref S (instanceref ddr_data_gen_0_U2_IDDR))
+              (portref S (instanceref answer_gen_3_U_ODDR))
+              (portref S (instanceref answer_gen_2_U_ODDR))
+              (portref S (instanceref answer_gen_1_U_ODDR))
+              (portref S (instanceref answer_gen_0_U_ODDR))
+              
+              )
+            )(net (rename data11rZ0Z_0 "data11r(0)") (joined
+              (portref Q (instanceref data11r_0))
+              (portref I0 (instanceref un3_answer1_p4))
+              (portref I0 (instanceref un3_answer1_axbxc1))
+              (portref I0 (instanceref un3_answer1_axb0))
+              
+              )
+            )(net (rename data11rZ0Z_1 "data11r(1)") (joined
+              (portref Q (instanceref data11r_1))
+              (portref I1 (instanceref un3_answer1_p4))
+              (portref I1 (instanceref un3_answer1_axbxc1))
+              
+              )
+            )(net (rename data11rZ0Z_2 "data11r(2)") (joined
+              (portref Q (instanceref data11r_2))
+              (portref I0 (instanceref un3_answer1_axbxc2))
+              (portref I0 (instanceref un3_answer1_axbxc3))
+              
+              )
+            )(net (rename data11rZ0Z_3 "data11r(3)") (joined
+              (portref Q (instanceref data11r_3))
+              (portref I0 (instanceref un3_answer1_axbxc3_1))
+              
+              )
+            )(net (rename data12rZ0Z_0 "data12r(0)") (joined
+              (portref Q (instanceref data12r_0))
+              (portref I0 (instanceref un2_answer2_p4))
+              (portref I0 (instanceref un2_answer2_axbxc1))
+              (portref I0 (instanceref un2_answer2_axb0))
+              
+              )
+            )(net (rename data12rZ0Z_1 "data12r(1)") (joined
+              (portref Q (instanceref data12r_1))
+              (portref I1 (instanceref un2_answer2_p4))
+              (portref I1 (instanceref un2_answer2_axbxc1))
+              
+              )
+            )(net (rename data12rZ0Z_2 "data12r(2)") (joined
+              (portref Q (instanceref data12r_2))
+              (portref I0 (instanceref un2_answer2_axbxc2))
+              (portref I0 (instanceref un2_answer2_axbxc3))
+              
+              )
+            )(net (rename data12rZ0Z_3 "data12r(3)") (joined
+              (portref Q (instanceref data12r_3))
+              (portref I0 (instanceref un2_answer2_axbxc3_1))
+              
+              )
+            )(net (rename data21rZ0Z_0 "data21r(0)") (joined
+              (portref Q (instanceref data21r_0))
+              (portref I2 (instanceref un3_answer1_p4))
+              (portref I2 (instanceref un3_answer1_axbxc1))
+              (portref I1 (instanceref un3_answer1_axb0))
+              
+              )
+            )(net (rename data21rZ0Z_1 "data21r(1)") (joined
+              (portref Q (instanceref data21r_1))
+              (portref I3 (instanceref un3_answer1_p4))
+              (portref I3 (instanceref un3_answer1_axbxc1))
+              
+              )
+            )(net (rename data21rZ0Z_2 "data21r(2)") (joined
+              (portref Q (instanceref data21r_2))
+              (portref I1 (instanceref un3_answer1_axbxc2))
+              (portref I1 (instanceref un3_answer1_axbxc3))
+              
+              )
+            )(net (rename data21rZ0Z_3 "data21r(3)") (joined
+              (portref Q (instanceref data21r_3))
+              (portref I1 (instanceref un3_answer1_axbxc3_1))
+              
+              )
+            )(net (rename data22rZ0Z_0 "data22r(0)") (joined
+              (portref Q (instanceref data22r_0))
+              (portref I2 (instanceref un2_answer2_p4))
+              (portref I2 (instanceref un2_answer2_axbxc1))
+              (portref I1 (instanceref un2_answer2_axb0))
+              
+              )
+            )(net (rename data22rZ0Z_1 "data22r(1)") (joined
+              (portref Q (instanceref data22r_1))
+              (portref I3 (instanceref un2_answer2_p4))
+              (portref I3 (instanceref un2_answer2_axbxc1))
+              
+              )
+            )(net (rename data22rZ0Z_2 "data22r(2)") (joined
+              (portref Q (instanceref data22r_2))
+              (portref I1 (instanceref un2_answer2_axbxc2))
+              (portref I1 (instanceref un2_answer2_axbxc3))
+              
+              )
+            )(net (rename data22rZ0Z_3 "data22r(3)") (joined
+              (portref Q (instanceref data22r_3))
+              (portref I1 (instanceref un2_answer2_axbxc3_1))
+              
+              )
+            )(net (rename un3_answer1_axbxcZ0Z1 "un3_answer1_axbxc1") (joined
+              (portref LO (instanceref un3_answer1_axbxc1))
+              (portref D (instanceref answer1_1))
+              
+              )
+            )(net (rename un3_answer1_axbxcZ0Z2 "un3_answer1_axbxc2") (joined
+              (portref LO (instanceref un3_answer1_axbxc2))
+              (portref D (instanceref answer1_2))
+              
+              )
+            )(net (rename un3_answer1_axbxcZ0Z3 "un3_answer1_axbxc3") (joined
+              (portref LO (instanceref un3_answer1_axbxc3))
+              (portref D (instanceref answer1_3))
+              
+              )
+            )(net (rename un2_answer2_axbxcZ0Z1 "un2_answer2_axbxc1") (joined
+              (portref LO (instanceref un2_answer2_axbxc1))
+              (portref D (instanceref answer2_1))
+              
+              )
+            )(net (rename un2_answer2_axbxcZ0Z2 "un2_answer2_axbxc2") (joined
+              (portref LO (instanceref un2_answer2_axbxc2))
+              (portref D (instanceref answer2_2))
+              
+              )
+            )(net (rename un2_answer2_axbxcZ0Z3 "un2_answer2_axbxc3") (joined
+              (portref LO (instanceref un2_answer2_axbxc3))
+              (portref D (instanceref answer2_3))
+              
+              )
+            )(net clk_c (joined
+              (portref O (instanceref clk_ibuf))
+              (portref C (instanceref ddr_data_gen_3_U1_IDDR))
+              (portref C (instanceref ddr_data_gen_2_U1_IDDR))
+              (portref C (instanceref ddr_data_gen_1_U1_IDDR))
+              (portref C (instanceref ddr_data_gen_0_U1_IDDR))
+              (portref C (instanceref ddr_data_gen_2_U2_IDDR))
+              (portref C (instanceref ddr_data_gen_3_U2_IDDR))
+              (portref C (instanceref ddr_data_gen_1_U2_IDDR))
+              (portref C (instanceref ddr_data_gen_0_U2_IDDR))
+              (portref C (instanceref answer_gen_3_U_ODDR))
+              (portref C (instanceref answer_gen_2_U_ODDR))
+              (portref C (instanceref answer_gen_1_U_ODDR))
+              (portref C (instanceref answer_gen_0_U_ODDR))
+              (portref REFCLK (instanceref dlyctrl))
+              (portref C (instanceref answer1_3))
+              (portref C (instanceref answer1_2))
+              (portref C (instanceref answer1_1))
+              (portref C (instanceref answer1_0))
+              (portref C (instanceref data21r_2))
+              (portref C (instanceref data21r_1))
+              (portref C (instanceref data21r_0))
+              (portref C (instanceref data12r_3))
+              (portref C (instanceref data12r_2))
+              (portref C (instanceref data12r_1))
+              (portref C (instanceref data12r_0))
+              (portref C (instanceref data11r_3))
+              (portref C (instanceref data11r_2))
+              (portref C (instanceref data11r_1))
+              (portref C (instanceref data11r_0))
+              (portref C (instanceref answer2_3))
+              (portref C (instanceref answer2_2))
+              (portref C (instanceref answer2_1))
+              (portref C (instanceref answer2_0))
+              (portref C (instanceref data22r_3))
+              (portref C (instanceref data22r_2))
+              (portref C (instanceref data22r_1))
+              (portref C (instanceref data22r_0))
+              (portref C (instanceref data21r_3))
+              
+              )
+            )(net clk (joined
+              (portref clk)
+              (portref I (instanceref clk_ibuf))
+              
+              )
+            )(net reset_c (joined
+              (portref O (instanceref reset_ibuf))
+              (portref R (instanceref ddr_data_gen_3_U1_IDDR))
+              (portref R (instanceref ddr_data_gen_2_U1_IDDR))
+              (portref R (instanceref ddr_data_gen_1_U1_IDDR))
+              (portref R (instanceref ddr_data_gen_0_U1_IDDR))
+              (portref R (instanceref ddr_data_gen_2_U2_IDDR))
+              (portref R (instanceref ddr_data_gen_3_U2_IDDR))
+              (portref R (instanceref ddr_data_gen_1_U2_IDDR))
+              (portref R (instanceref ddr_data_gen_0_U2_IDDR))
+              (portref R (instanceref answer_gen_3_U_ODDR))
+              (portref R (instanceref answer_gen_2_U_ODDR))
+              (portref R (instanceref answer_gen_1_U_ODDR))
+              (portref R (instanceref answer_gen_0_U_ODDR))
+              (portref RST (instanceref dlyctrl))
+              (portref I (instanceref reset_c_i))
+              
+              )
+            )(net reset (joined
+              (portref reset)
+              (portref I (instanceref reset_ibuf))
+              
+              )
+            )(net enable_c (joined
+              (portref O (instanceref enable_ibuf))
+              (portref CE (instanceref ddr_data_gen_3_U1_IDDR))
+              (portref CE (instanceref ddr_data_gen_2_U1_IDDR))
+              (portref CE (instanceref ddr_data_gen_1_U1_IDDR))
+              (portref CE (instanceref ddr_data_gen_0_U1_IDDR))
+              (portref CE (instanceref ddr_data_gen_2_U2_IDDR))
+              (portref CE (instanceref ddr_data_gen_3_U2_IDDR))
+              (portref CE (instanceref ddr_data_gen_1_U2_IDDR))
+              (portref CE (instanceref ddr_data_gen_0_U2_IDDR))
+              (portref CE (instanceref answer_gen_3_U_ODDR))
+              (portref CE (instanceref answer_gen_2_U_ODDR))
+              (portref CE (instanceref answer_gen_1_U_ODDR))
+              (portref CE (instanceref answer_gen_0_U_ODDR))
+              
+              )
+            )(net enable (joined
+              (portref enable)
+              (portref I (instanceref enable_ibuf))
+              
+              )
+            )(net (rename data1_c_0 "data1_c(0)") (joined
+              (portref O (instanceref data1_ibuf_0))
+              (portref I (instanceref ddata_gen_0_UD1))
+              
+              )
+            )(net (rename data1_0 "data1(0)") (joined
+              (portref (member data1 3))
+              (portref I (instanceref data1_ibuf_0))
+              
+              )
+            )(net (rename data1_c_1 "data1_c(1)") (joined
+              (portref O (instanceref data1_ibuf_1))
+              (portref I (instanceref ddata_gen_1_UD1))
+              
+              )
+            )(net (rename data1_1 "data1(1)") (joined
+              (portref (member data1 2))
+              (portref I (instanceref data1_ibuf_1))
+              
+              )
+            )(net (rename data1_c_2 "data1_c(2)") (joined
+              (portref O (instanceref data1_ibuf_2))
+              (portref I (instanceref ddata_gen_2_UD1))
+              
+              )
+            )(net (rename data1_2 "data1(2)") (joined
+              (portref (member data1 1))
+              (portref I (instanceref data1_ibuf_2))
+              
+              )
+            )(net (rename data1_c_3 "data1_c(3)") (joined
+              (portref O (instanceref data1_ibuf_3))
+              (portref I (instanceref ddata_gen_3_UD1))
+              
+              )
+            )(net (rename data1_3 "data1(3)") (joined
+              (portref (member data1 0))
+              (portref I (instanceref data1_ibuf_3))
+              
+              )
+            )(net (rename data2_c_0 "data2_c(0)") (joined
+              (portref O (instanceref data2_ibuf_0))
+              (portref I (instanceref ddata_gen_0_UD2))
+              
+              )
+            )(net (rename data2_0 "data2(0)") (joined
+              (portref (member data2 3))
+              (portref I (instanceref data2_ibuf_0))
+              
+              )
+            )(net (rename data2_c_1 "data2_c(1)") (joined
+              (portref O (instanceref data2_ibuf_1))
+              (portref I (instanceref ddata_gen_1_UD2))
+              
+              )
+            )(net (rename data2_1 "data2(1)") (joined
+              (portref (member data2 2))
+              (portref I (instanceref data2_ibuf_1))
+              
+              )
+            )(net (rename data2_c_2 "data2_c(2)") (joined
+              (portref O (instanceref data2_ibuf_2))
+              (portref I (instanceref ddata_gen_2_UD2))
+              
+              )
+            )(net (rename data2_2 "data2(2)") (joined
+              (portref (member data2 1))
+              (portref I (instanceref data2_ibuf_2))
+              
+              )
+            )(net (rename data2_c_3 "data2_c(3)") (joined
+              (portref O (instanceref data2_ibuf_3))
+              (portref I (instanceref ddata_gen_3_UD2))
+              
+              )
+            )(net (rename data2_3 "data2(3)") (joined
+              (portref (member data2 0))
+              (portref I (instanceref data2_ibuf_3))
+              
+              )
+            )(net (rename answer_0 "answer(0)") (joined
+              (portref O (instanceref answer_obuf_0))
+              (portref (member answer 3))
+              
+              )
+            )(net (rename answer_1 "answer(1)") (joined
+              (portref O (instanceref answer_obuf_1))
+              (portref (member answer 2))
+              
+              )
+            )(net (rename answer_2 "answer(2)") (joined
+              (portref O (instanceref answer_obuf_2))
+              (portref (member answer 1))
+              
+              )
+            )(net (rename answer_3 "answer(3)") (joined
+              (portref O (instanceref answer_obuf_3))
+              (portref (member answer 0))
+              
+              )
+            )(net (rename un3_answer1_pZ0Z4 "un3_answer1_p4") (joined
+              (portref O (instanceref un3_answer1_p4))
+              (portref I2 (instanceref un3_answer1_axbxc2))
+              (portref I3 (instanceref un3_answer1_axbxc3))
+              
+              )
+            )(net (rename un3_answer1_axbZ0Z0 "un3_answer1_axb0") (joined
+              (portref LO (instanceref un3_answer1_axb0))
+              (portref D (instanceref answer1_0))
+              
+              )
+            )(net (rename un2_answer2_pZ0Z4 "un2_answer2_p4") (joined
+              (portref O (instanceref un2_answer2_p4))
+              (portref I2 (instanceref un2_answer2_axbxc2))
+              (portref I3 (instanceref un2_answer2_axbxc3))
+              
+              )
+            )(net (rename un2_answer2_axbZ0Z0 "un2_answer2_axb0") (joined
+              (portref LO (instanceref un2_answer2_axb0))
+              (portref D (instanceref answer2_0))
+              
+              )
+            )(net (rename reset_c_iZ0 "reset_c_i") (joined
+              (portref O (instanceref reset_c_i))
+              (portref CLR (instanceref answer1_3))
+              (portref CLR (instanceref answer1_2))
+              (portref CLR (instanceref answer1_1))
+              (portref CLR (instanceref answer1_0))
+              (portref CLR (instanceref data21r_2))
+              (portref CLR (instanceref data21r_1))
+              (portref CLR (instanceref data21r_0))
+              (portref CLR (instanceref data12r_3))
+              (portref CLR (instanceref data12r_2))
+              (portref CLR (instanceref data12r_1))
+              (portref CLR (instanceref data12r_0))
+              (portref CLR (instanceref data11r_3))
+              (portref CLR (instanceref data11r_2))
+              (portref CLR (instanceref data11r_1))
+              (portref CLR (instanceref data11r_0))
+              (portref CLR (instanceref answer2_3))
+              (portref CLR (instanceref answer2_2))
+              (portref CLR (instanceref answer2_1))
+              (portref CLR (instanceref answer2_0))
+              (portref CLR (instanceref data22r_3))
+              (portref CLR (instanceref data22r_2))
+              (portref CLR (instanceref data22r_1))
+              (portref CLR (instanceref data22r_0))
+              (portref CLR (instanceref data21r_3))
+              
+              )
+            )(net (rename un2_answer2_axbxc3Z0Z_1 "un2_answer2_axbxc3_1") (joined
+              (portref O (instanceref un2_answer2_axbxc3_1))
+              (portref I2 (instanceref un2_answer2_axbxc3))
+              
+              )
+            )(net (rename un3_answer1_axbxc3Z0Z_1 "un3_answer1_axbxc3_1") (joined
+              (portref O (instanceref un3_answer1_axbxc3_1))
+              (portref I2 (instanceref un3_answer1_axbxc3))
+              
+              )
+            ))
+        )
+      )
+    )
+  (design (rename Z4bitadder "adder")
+    (cellref Z4bitadder(libraryref work))
+    )
+  )
